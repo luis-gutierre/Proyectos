@@ -1,0 +1,42 @@
+Sub puntaje()
+'
+' ejecutar_puntajes_totales Macro
+' puntajes_totales
+'
+
+'
+    Application.Goto Reference:="R2C4"
+    ActiveCell.FormulaR1C1 = _
+        "=[@[Nro de Colocaciones]]*25+[@[Monto de Colocaciones]]/10700*50"
+    Range("I2").Select
+    ActiveCell.FormulaR1C1 = _
+        "=[@Seguro1]*45+[@Seguro2]*45+[@Seguro3]*15+[@Seguro4]*8"
+    Range("K2").Select
+    ActiveCell.FormulaR1C1 = "=[@[Monto Depositado]]/300000*50"
+    Range("L2").Select
+    Application.CutCopyMode = False
+    ActiveCell.FormulaR1C1 = _
+        "=[@[Puntaje Final de Colocacion]]+[@[Puntaje de seguros Final]]+[@[Puntaje de depósito Final]]"
+    Range("M6").Select
+End Sub
+Sub borrar_puntajes_totales()
+'
+' borrar_puntajes_totales Macro
+' borrar_puntajes_totales
+'
+
+'
+    Application.Goto Reference:="R2C4"
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.ClearContents
+    Application.Goto Reference:="R2C9"
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.ClearContents
+    Application.Goto Reference:="R2C11"
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.ClearContents
+    Application.Goto Reference:="R2C12"
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.ClearContents
+    Range("M382").Select
+End Sub
